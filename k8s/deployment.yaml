@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: patient-service-deployment
+  labels:
+    app: patient-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-app
+      app: patient-service
   template:
     metadata:
       labels:
-        app: demo-app
+        app: patient-service
     spec:
       containers:
-        - name: demo-app
-          image: yourdockerhub/demo-app:latest
+        - name: patient-service
+          image: vishwanthtalluri/patient-service:latest
           ports:
             - containerPort: 8080
